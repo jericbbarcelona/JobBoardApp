@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">JobBoardApp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    Landing Page-->
+    <string name="landing_page.no_data_found_message">No data found.</string>
+
+
 </resources>
