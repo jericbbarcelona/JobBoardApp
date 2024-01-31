@@ -12,5 +12,5 @@ interface BaseRepository {
     suspend fun insertJob(requestData: InsertJobRequestData): ApiResource<Any>
     suspend fun updateJob(requestData: InsertJobRequestData): ApiResource<Any>
     suspend fun filterJobs(keyword: String, jobIndustryType: Int): ApiResource<List<Job>>
-    suspend fun applyJob(requestData: ApplyJobRequestData): ApiResource<Any>
+    suspend fun applyJob(jobId: String, requestData: ApplyJobRequestData): ApiResource<Any>
 }

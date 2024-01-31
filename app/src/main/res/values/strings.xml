@@ -2,10 +2,17 @@
     <string name="app_name">JobBoardApp</string>
     <string name="search_jobs">Search Jobs</string>
 
-    <!--    Landing Page-->
     <string name="job_listing.no_data_found_message">No data found.</string>
 
+    <string name="global.dialog_header_apply_job">Apply Job</string>
+    <string name="global.dialog_description_fill_in_required_fields">Please fill in the required fields.</string>
     <string name="global.email_address_error_message">Please enter valid email address</string>
+    <string name="global.first_name_label">First Name</string>
+    <string name="global.first_name_hint">First Name</string>
+    <string name="global.last_name_label">Last Name</string>
+    <string name="global.last_name_hint">Last Name</string>
+    <string name="global.email_address_label">Email Address</string>
+    <string name="global.email_address_hint">Email Address</string>
     <string name="global.first_name_error_message">Please enter valid first name</string>
     <string name="global.last_name_error_message">Please enter valid last name</string>
     <string name="global.title_error_message">Please enter valid title</string>
@@ -13,5 +20,6 @@
     <string name="global.no_of_openings_error_message">Please enter valid number of openings</string>
     <string name="global.industry_error_message">Please select valid industry</string>
     <string name="global.keyword_error_message">Please enter valid keyword</string>
+    <string name="global.button_text_apply">Apply</string>
 
 </resources>

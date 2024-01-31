@@ -14,6 +14,6 @@ object ApiMethod {
 
     object JobApplicant {
         private const val JOB_APPLICANT = API + "JobApplicant/"
-        const val APPLY_JOB = JOB_APPLICANT + "applyjob"
+        const val APPLY_JOB = JOB_APPLICANT + "applyjob/{jobId}"
     }
 }

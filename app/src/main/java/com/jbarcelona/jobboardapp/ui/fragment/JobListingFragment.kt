@@ -33,12 +33,13 @@ class JobListingFragment : BaseFragment(), JobAdapter.OnJobClickListener, OnRefr
         private const val REQUEST_UPDATE_JOB = 1001
 
         @JvmStatic
-        fun newInstance(filteredJobList: ArrayList<Job>? = null, isFiltered: Boolean = false) = JobListingFragment().apply {
-            arguments = Bundle().apply {
-                putParcelableArrayList(ARG_FILTERED_JOB_LIST, filteredJobList)
-                putBoolean(ARG_IS_FILTERED, isFiltered)
+        fun newInstance(filteredJobList: ArrayList<Job>? = null, isFiltered: Boolean = false) =
+            JobListingFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelableArrayList(ARG_FILTERED_JOB_LIST, filteredJobList)
+                    putBoolean(ARG_IS_FILTERED, isFiltered)
+                }
             }
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -52,12 +53,12 @@ class JobListingFragment : BaseFragment(), JobAdapter.OnJobClickListener, OnRefr
             this.lifecycleOwner = activity
         }
         initAdapter()
-        setProgressBarVisibility(true)
-        val isFiltered = arguments?.getBoolean(ARG_IS_FILTERED)?: false
+        val isFiltered = arguments?.getBoolean(ARG_IS_FILTERED) ?: false
         if (isFiltered) {
             val filteredJobList: ArrayList<Job>? = arguments?.getParcelableArrayList(ARG_FILTERED_JOB_LIST)
             populateJobList(filteredJobList)
         } else {
+            setProgressBarVisibility(true)
             viewModel.getAllJobs()
         }
         setupObservers()
@@ -142,11 +143,6 @@ class JobListingFragment : BaseFragment(), JobAdapter.OnJobClickListener, OnRefr
     override fun onDeleteJob(job: Job) {
         setProgressBarVisibility(true)
         viewModel.deleteJob(job)
-    }
-
-    fun on() {
-        setProgressBarVisibility(true)
-        viewModel.getAllJobs()
     }
 
     override fun onUpdateJobListing() {

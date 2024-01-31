@@ -32,7 +32,7 @@ class MainRepository @Inject constructor(
         return getResult { apiService.filterJobs(keyword, jobIndustryType) }
     }
 
-    override suspend fun applyJob(requestData: ApplyJobRequestData): ApiResource<Any> {
-        return getResult { apiService.applyJob(requestData) }
+    override suspend fun applyJob(jobId: String, requestData: ApplyJobRequestData): ApiResource<Any> {
+        return getResult { apiService.applyJob(jobId, requestData) }
     }
 }

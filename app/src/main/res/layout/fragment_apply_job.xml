@@ -38,9 +38,9 @@
                     android:background="@color/white"
                     android:contentDescription="@null"
                     android:src="@drawable/baseline_close_24"
-                    android:tint="@color/purple_700"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/purple_700" />
 
                 <LinearLayout
                     android:id="@+id/ll_header"
@@ -53,7 +53,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Apply Job"
+                        android:text="@string/global.dialog_header_apply_job"
                         android:textColor="@color/black"
                         android:textSize="25sp"
                         android:textStyle="bold" />
@@ -62,7 +62,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Please fill in the required fields."
+                        android:text="@string/global.dialog_description_fill_in_required_fields"
                         android:textColor="@color/grey"
                         android:textSize="15sp"
                         android:textStyle="normal" />
@@ -73,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="First Name"
+                    android:text="@string/global.first_name_label"
                     android:textColor="@color/grey"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ll_header" />
@@ -82,7 +82,7 @@
                     android:id="@+id/et_first_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="First Name"
+                    android:hint="@string/global.first_name_hint"
                     android:inputType="textPersonName|textCapWords"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_first_name_label" />
@@ -104,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Last Name"
+                    android:text="@string/global.last_name_label"
                     android:textColor="@color/grey"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_error_first_name" />
@@ -113,7 +113,7 @@
                     android:id="@+id/et_last_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Last Name"
+                    android:hint="@string/global.last_name_hint"
                     android:inputType="textPersonName|textCapWords"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_last_name_label" />
@@ -135,7 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Email Address"
+                    android:text="@string/global.email_address_label"
                     android:textColor="@color/grey"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/et_last_name" />
@@ -144,7 +144,7 @@
                     android:id="@+id/et_email_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email Address"
+                    android:hint="@string/global.email_address_hint"
                     android:inputType="textEmailAddress"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_email_address_label" />
@@ -170,7 +170,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:text="Apply"
+            android:text="@string/global.button_text_apply"
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <RelativeLayout

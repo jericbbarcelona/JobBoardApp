@@ -22,6 +22,7 @@ class ApplyJobViewModel @Inject constructor(
             try {
                 val fullName = "$firstName $lastName"
                 val responseData = mainRepository.applyJob(
+                    jobId,
                     ApplyJobRequestData(
                         id = jobId,
                         fullName = fullName,

@@ -9,6 +9,7 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -32,6 +33,6 @@ interface ApiService {
     ): Response<List<Job>>
 
     @POST(ApiMethod.JobApplicant.APPLY_JOB)
-    suspend fun applyJob(@Body requestData: ApplyJobRequestData): Response<Any>
+    suspend fun applyJob(@Path("jobId") jobId: String, @Body requestData: ApplyJobRequestData): Response<Any>
 
 }
