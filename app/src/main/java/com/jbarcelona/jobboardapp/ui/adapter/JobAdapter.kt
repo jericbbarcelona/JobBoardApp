@@ -28,6 +28,7 @@ class JobAdapter(
         holder.apply {
             tvTitle.text = jobItem.title
             tvDescription.text = jobItem.description
+            tvIndustry.text = getMappedIndustry(jobItem.industry?: 0)
             btnApply.setOnClickListener {
                 listener?.onApplyJob(jobItem)
             }
@@ -44,11 +45,21 @@ class JobAdapter(
                             listener?.onDeleteJob(jobItem)
                         }
                     }
-
                     true
                 }
                 popup.show()
             }
+        }
+    }
+
+    private fun getMappedIndustry(position: Int): String {
+        return when (position) {
+            1 -> "Management"
+            2 -> "Manufacturing"
+            3 -> "Consultant"
+            4 -> "Software Development"
+            5 -> "Call Center"
+            else -> ""
         }
     }
 
@@ -57,6 +68,7 @@ class JobAdapter(
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvTitle: TextView = view.findViewById(R.id.tv_title)
         val tvDescription: TextView = view.findViewById(R.id.tv_description)
+        val tvIndustry: TextView = view.findViewById(R.id.tv_industry)
         val btnApply: Button = view.findViewById(R.id.btn_apply)
         val ibMenu: ImageButton = view.findViewById(R.id.ib_menu)
     }

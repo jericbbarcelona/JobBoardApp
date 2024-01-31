@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="industry">\
+        <item>- Select -</item>
+        <item>Management</item>
+        <item>Manufacturing</item>
+        <item>Consultant</item>
+        <item>Software Development</item>
+        <item>Call Center</item>
+    </string-array>
+
+</resources>

@@ -4,6 +4,8 @@ import com.jbarcelona.jobboardapp.network.ApiDataSource
 import com.jbarcelona.jobboardapp.network.ApiResource
 import com.jbarcelona.jobboardapp.network.ApiService
 import com.jbarcelona.jobboardapp.network.model.Job
+import com.jbarcelona.jobboardapp.network.request.ApplyJobRequestData
+import com.jbarcelona.jobboardapp.network.request.InsertJobRequestData
 import javax.inject.Inject
 
 class MainRepository @Inject constructor(
@@ -14,7 +16,23 @@ class MainRepository @Inject constructor(
         return getResult { apiService.getAllJobs() }
     }
 
-    override suspend fun deleteJob(id: Int): ApiResource<Any> {
+    override suspend fun deleteJob(id: String): ApiResource<Any> {
         return getResult { apiService.deleteJob(id) }
+    }
+
+    override suspend fun insertJob(requestData: InsertJobRequestData): ApiResource<Any> {
+        return getResult { apiService.insertJob(requestData) }
+    }
+
+    override suspend fun updateJob(requestData: InsertJobRequestData): ApiResource<Any> {
+        return getResult { apiService.updateJob(requestData) }
+    }
+
+    override suspend fun filterJobs(keyword: String, jobIndustryType: Int): ApiResource<List<Job>> {
+        return getResult { apiService.filterJobs(keyword, jobIndustryType) }
+    }
+
+    override suspend fun applyJob(requestData: ApplyJobRequestData): ApiResource<Any> {
+        return getResult { apiService.applyJob(requestData) }
     }
 }

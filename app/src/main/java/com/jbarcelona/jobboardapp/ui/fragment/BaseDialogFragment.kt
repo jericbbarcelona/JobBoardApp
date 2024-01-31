@@ -1,11 +1,9 @@
 package com.jbarcelona.jobboardapp.ui.fragment
 
 import android.app.AlertDialog
-import androidx.fragment.app.Fragment
-import dagger.hilt.android.AndroidEntryPoint
+import androidx.appcompat.app.AppCompatDialogFragment
 
-@AndroidEntryPoint
-abstract class BaseFragment : Fragment() {
+abstract class BaseDialogFragment : AppCompatDialogFragment() {
 
     fun showErrorDialog(message: String) {
         val builder = AlertDialog.Builder(context)

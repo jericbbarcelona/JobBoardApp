@@ -8,12 +8,12 @@ object ApiMethod {
         const val GET_ALL = JOB + "getall"
         const val INSERT = JOB + "insert"
         const val UPDATE = JOB + "update"
-        const val DELETE = JOB + "delete{id}"
+        const val DELETE = JOB + "delete"
+        const val FILTER = JOB + "filter"
     }
 
     object JobApplicant {
         private const val JOB_APPLICANT = API + "JobApplicant/"
-        const val APPLY = JOB_APPLICANT + "applyjob"
-        const val GET_JOBS_APPLIED = JOB_APPLICANT + "getjobsapplied"
+        const val APPLY_JOB = JOB_APPLICANT + "applyjob"
     }
 }

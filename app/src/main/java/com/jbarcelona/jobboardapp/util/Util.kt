@@ -17,4 +17,6 @@ object Util {
         val pattern = Pattern.compile(REGEX_EMAIL)
         return pattern.matcher(email).matches()
     }
+
+    fun isInteger(str: String?) = str?.toIntOrNull()?.let { true } ?: false
 }

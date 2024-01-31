@@ -8,5 +8,10 @@
     <string name="global.email_address_error_message">Please enter valid email address</string>
     <string name="global.first_name_error_message">Please enter valid first name</string>
     <string name="global.last_name_error_message">Please enter valid last name</string>
+    <string name="global.title_error_message">Please enter valid title</string>
+    <string name="global.description_error_message">Please enter valid description</string>
+    <string name="global.no_of_openings_error_message">Please enter valid number of openings</string>
+    <string name="global.industry_error_message">Please select valid industry</string>
+    <string name="global.keyword_error_message">Please enter valid keyword</string>
 
 </resources>

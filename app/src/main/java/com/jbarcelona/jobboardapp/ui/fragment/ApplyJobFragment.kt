@@ -9,17 +9,18 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatDialogFragment
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.jbarcelona.jobboardapp.R
 import com.jbarcelona.jobboardapp.databinding.FragmentApplyJobBinding
+import com.jbarcelona.jobboardapp.network.NetworkResult
 import com.jbarcelona.jobboardapp.ui.viewmodel.ApplyJobViewModel
 import com.jbarcelona.jobboardapp.util.Util
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ApplyJobFragment : AppCompatDialogFragment() {
+class ApplyJobFragment : BaseDialogFragment() {
 
     private lateinit var viewModel: ApplyJobViewModel
     private lateinit var binding: FragmentApplyJobBinding
@@ -62,13 +63,22 @@ class ApplyJobFragment : AppCompatDialogFragment() {
             hideTextAfterTextChanged(etLastName, tvErrorLastName)
             btnApply.setOnClickListener {
                 if (validateFields()) {
-
+                    triggerApplyJob()
                 }
             }
             ibExit.setOnClickListener {
                 dismiss()
             }
         }
+    }
+
+    private fun triggerApplyJob() {
+        setProgressBarVisibility(true)
+        val jobId = arguments?.getString(ARG_JOB_ID) ?: ""
+        val firstName = binding.etFirstName.text.toString().trim()
+        val lastName = binding.etLastName.text.toString().trim()
+        val emailAddress = binding.etEmailAddress.text.toString().trim()
+        viewModel.applyJob(jobId, firstName, lastName, emailAddress)
     }
 
     private fun setProgressBarVisibility(visible: Boolean) {
@@ -122,10 +132,28 @@ class ApplyJobFragment : AppCompatDialogFragment() {
     }
 
     private fun setupObservers() {
+        viewModel.applyJobEvent.observe(viewLifecycleOwner) {
+            setProgressBarVisibility(false)
+            when (it) {
+                is NetworkResult.Success -> {
+                    Toast.makeText(activity, "Job application successfully submitted.", Toast.LENGTH_LONG).show()
+                    dismiss()
+                }
+                is NetworkResult.Error -> {
+                    Toast.makeText(activity, it.message, Toast.LENGTH_LONG).show()
+                    showErrorDialog(it.message)
+                }
+            }
+        }
     }
 
     companion object {
+        const val ARG_JOB_ID = "ARG_JOB_ID"
         @JvmStatic
-        fun newInstance() = ApplyJobFragment()
+        fun newInstance(jobId: String?) = ApplyJobFragment().apply {
+            arguments = Bundle().apply {
+                putString(ARG_JOB_ID, jobId)
+            }
+        }
     }
 }

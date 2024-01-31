@@ -1,11 +1,8 @@
-package com.jbarcelona.jobboardapp.network.model
+package com.jbarcelona.jobboardapp.network.request
 
-import android.os.Parcelable
 import com.squareup.moshi.Json
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
-data class Job(
+data class InsertJobRequestData(
     @Json(name = "id")
     var id: String? = null,
     @Json(name = "noOfOpenings")
@@ -16,4 +13,4 @@ data class Job(
     var description: String? = null,
     @Json(name = "industry")
     var industry: Int? = null
-): Parcelable
+)
