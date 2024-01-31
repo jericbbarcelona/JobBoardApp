@@ -11,17 +11,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jbarcelona.jobboardapp.R
 import com.jbarcelona.jobboardapp.databinding.FragmentJobListingBinding
+import com.jbarcelona.jobboardapp.network.model.Job
 import com.jbarcelona.jobboardapp.ui.adapter.JobAdapter
 import com.jbarcelona.jobboardapp.ui.viewmodel.JobListingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class JobListingFragment : BaseFragment() {
+class JobListingFragment : BaseFragment(), JobAdapter.OnJobClickListener {
 
     private lateinit var viewModel: JobListingViewModel
     private lateinit var binding: FragmentJobListingBinding
     private lateinit var jobLayoutManager: RecyclerView.LayoutManager
     private lateinit var jobAdapter: JobAdapter
+
+    companion object {
+        private const val REQUEST_APPLY_JOB = 1000
+        private const val REQUEST_CREATE_JOB = 1001
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         viewModel = ViewModelProvider(this).get(JobListingViewModel::class.java)
@@ -41,7 +47,7 @@ class JobListingFragment : BaseFragment() {
 
     private fun initAdapter() {
         jobLayoutManager = LinearLayoutManager(requireContext())
-        jobAdapter = JobAdapter(emptyList())
+        jobAdapter = JobAdapter(emptyList(), this)
         binding.rvJobs.layoutManager = jobLayoutManager
         binding.rvJobs.adapter = jobAdapter
     }
@@ -65,5 +71,25 @@ class JobListingFragment : BaseFragment() {
                 }
             }
         }
+        viewModel.deleteJobEvent.observe(viewLifecycleOwner) {
+
+        }
+    }
+
+    override fun onApplyJob(job: Job) {
+        fragmentManager?.let { fm ->
+            ApplyJobFragment.newInstance().let {
+                it.setTargetFragment(this, REQUEST_APPLY_JOB)
+                it.show(fm, ApplyJobFragment::class.java.simpleName)
+            }
+        }
+    }
+
+    override fun onUpdateJob(job: Job) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteJob(job: Job) {
+        viewModel.deleteJob(job)
     }
 }

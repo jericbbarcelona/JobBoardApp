@@ -14,6 +14,7 @@ class JobListingViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     val populateJobListEvent = MutableLiveData<JobResult>()
+    val deleteJobEvent = MutableLiveData<JobResult>()
 
     fun getAllJobs() {
         viewModelScope.launch {
@@ -23,6 +24,17 @@ class JobListingViewModel @Inject constructor(
             } catch (e: Exception) {
                 populateJobListEvent.postValue(JobResult.Error(e.message.toString()))
             }
+        }
+    }
+
+    fun deleteJob(job: Job) {
+        viewModelScope.launch {
+//            try {
+//                val responseData = mainRepository.deleteJob()
+//                deleteJobEvent.postValue(JobResult.Success(responseData.data))
+//            } catch (e: Exception) {
+//                deleteJobEvent.postValue(JobResult.Error(e.message.toString()))
+//            }
         }
     }
 

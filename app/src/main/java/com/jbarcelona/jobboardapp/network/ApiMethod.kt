@@ -8,7 +8,7 @@ object ApiMethod {
         const val GET_ALL = JOB + "getall"
         const val INSERT = JOB + "insert"
         const val UPDATE = JOB + "update"
-        const val DELETE = JOB + "delete"
+        const val DELETE = JOB + "delete{id}"
     }
 
     object JobApplicant {

@@ -12,25 +12,23 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="14dp"
-        android:elevation="2dp"
-        app:cardCornerRadius="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="12dp">
 
             <LinearLayout
                 android:id="@+id/ll_content"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -39,22 +37,52 @@
                         android:id="@+id/tv_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
+                        android:layout_alignParentStart="true"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         tools:text="Senior Developer" />
-                </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/ib_menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:background="@null"
+                        app:srcCompat="@drawable/more" />
+
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/tv_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/grey"
                     android:textSize="14sp"
                     tools:text="8+ years of experience as Senior Developer" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_apply"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:backgroundTint="@color/purple_700"
+                    android:text="Apply Now"
+                    android:textAllCaps="false"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

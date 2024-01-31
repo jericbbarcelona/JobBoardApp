@@ -13,4 +13,8 @@ class MainRepository @Inject constructor(
     override suspend fun getAllJobs(): ApiResource<List<Job>> {
         return getResult { apiService.getAllJobs() }
     }
+
+    override suspend fun deleteJob(id: Int): ApiResource<Any> {
+        return getResult { apiService.deleteJob(id) }
+    }
 }
