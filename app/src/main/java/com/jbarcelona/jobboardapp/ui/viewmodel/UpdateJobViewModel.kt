@@ -2,6 +2,7 @@ package com.jbarcelona.jobboardapp.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.jbarcelona.jobboardapp.network.ApiResource
 import com.jbarcelona.jobboardapp.network.NetworkResult
 import com.jbarcelona.jobboardapp.network.request.InsertJobRequestData
 import com.jbarcelona.jobboardapp.repository.MainRepository
@@ -28,7 +29,11 @@ class UpdateJobViewModel @Inject constructor(
                         industry = position
                     )
                 )
-                updateJobEvent.postValue(NetworkResult.Success(responseData))
+                if (responseData.status == ApiResource.Status.SUCCESS) {
+                    updateJobEvent.postValue(NetworkResult.Success(responseData))
+                } else {
+                    updateJobEvent.postValue(NetworkResult.Error(responseData.message.orEmpty()))
+                }
             } catch (e: Exception) {
                 updateJobEvent.postValue(NetworkResult.Error(e.message.toString()))
             }

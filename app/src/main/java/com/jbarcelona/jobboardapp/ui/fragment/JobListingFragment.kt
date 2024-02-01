@@ -99,6 +99,10 @@ class JobListingFragment : BaseFragment(), JobAdapter.OnJobClickListener, OnRefr
                 }
             }
         }
+        viewModel.noDataEvent.observe(viewLifecycleOwner) {
+            binding.llContent.visibility = View.GONE
+            binding.tvMessage.visibility = View.VISIBLE
+        }
     }
 
     private fun populateJobList(result: List<Job>?) {
